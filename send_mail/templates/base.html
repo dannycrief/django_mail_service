@@ -43,7 +43,7 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="nav-link" href="{% url 'login' %}">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -62,6 +62,7 @@
         <div class="main-content">
             {% block index %}{% endblock %}
             {% block register %}{% endblock %}
+            {% block  login %}{% endblock %}
         </div>
     </section>
 </main>

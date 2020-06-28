@@ -24,6 +24,7 @@ urlpatterns = [
     path('register/', v.register, name='register'),
     path('logout/', v.user_logout, name='logout'),
     path('', include('send_mail.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

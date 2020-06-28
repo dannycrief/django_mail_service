@@ -124,6 +124,22 @@ nav.navbar {
 }
 
 .register-form {
-    padding: 30px;
+    padding: 15px;
     background-color: rgba(89, 128, 196, 0.25);
+}
+
+.form-group {
+    color: white;
+}
+
+.form-group > div > div input {
+    color: white !important;
+    background-color: rgba(62, 73, 255, 0.1);
+    border-color: #55e2ff;
+}
+
+#hint_id_username,
+#hint_id_password1,
+#hint_id_password2 {
+    color: #3eadff !important;
 }
