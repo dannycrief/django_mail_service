@@ -17,9 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from send_mail import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', v.register, name='register'),
+    path('logout/', v.user_logout, name='logout'),
     path('', include('send_mail.urls')),
 ]
 

@@ -1,5 +1,5 @@
 body {
-    height: 5000px;
+    /*height: 5000px;*/
     font-family: Roboto, sans-serif !important;
 }
 
@@ -58,7 +58,7 @@ nav.navbar {
     z-index: 5;
     padding: 0 50px;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 56px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,4 +121,9 @@ nav.navbar {
     color: white !important;
     border-color: #ab1c52 !important;
     background-color: #ab1c52 !important;
+}
+
+.register-form {
+    padding: 30px;
+    background-color: rgba(89, 128, 196, 0.25);
 }
