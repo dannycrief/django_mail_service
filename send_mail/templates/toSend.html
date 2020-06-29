@@ -3,18 +3,48 @@
     <div class="container" style="display: flex; justify-content: center; align-items: center">
         <div class="row">
             <div class="col-md-12">
-                <form method="post">
-                    {% csrf_token %}
-                    {% for i in history %}
-                        --------------------------
-                        <p>To: {{ i.receiver }}</p>
-                        <p>Title: {{ i.title }}</p>
-                        <p>Message: {{ i.message }}</p>
-                        <p>Date of create: {{ i.date_of_create }}</p>
-                        <p>Date of send: {{ i.date_of_send }}</p>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-success" style="align-self: center;">Send</button>
-                </form>
+                {% if history %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for i in history %}
+                            --------------------------
+                            <p>To: {{ i.receiver }}</p>
+                            <p>Title: {{ i.title }}</p>
+                            <p>Message: {{ i.message }}</p>
+                            <p>Date of create: {{ i.date_of_create }}</p>
+                            <p>Date of send: {{ i.date_of_send }}</p>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-success" style="align-self: center;">Send</button>
+                    </form>
+                {% else %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
+                            hidden></button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                         tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Alert</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    You don't have any messages to send
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Understood
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $('button[data-target="#staticBackdrop"]').click();
+                    </script>
+                {% endif %}
             </div>
         </div>
     </div>

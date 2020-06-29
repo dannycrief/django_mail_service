@@ -8,8 +8,6 @@ from django.contrib.auth import logout
 from .models import EmailIHistory
 from django.core.mail import send_mail
 import threading
-from threading import Thread
-from datetime import datetime
 
 
 def index(request):
@@ -33,7 +31,8 @@ def user_logout(request):
     return redirect('email-send:index')
 
 
-def send(email):
+@login_required
+def send_letter(email):
     receiver = email.receiver
     title = email.title
     message = email.message
@@ -45,21 +44,25 @@ def send(email):
         send_mail(title, message, None, [receiver], fail_silently=False)
 
 
+@login_required
 def to_send(request):
     threads = []
     user_history = EmailIHistory.objects.filter(send_status=False, user_id=request.user.id)
     for email in user_history:
         if request.method == "POST":
-            t = threading.Thread(target=send, args=(email,))
+            t = threading.Thread(target=send_letter, args=(email,))
             threads.append(t)
+            print('Starting')
             t.start()
 
-    context = {'history': user_history}
     for t in threads:
+        print('ENDING')
         t.join()
+    context = {'history': user_history}
     return render(request, 'toSend.html', context)
 
 
+@login_required
 def history(request):
     user_history = EmailIHistory.objects.filter(user_id=request.user.id)
     context = {'history': user_history}
