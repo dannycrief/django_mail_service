@@ -58,7 +58,9 @@ def to_send(request):
     for t in threads:
         print('ENDING')
         t.join()
-    context = {'history': user_history}
+    context = {
+        'history': user_history,
+    }
     return render(request, 'toSend.html', context)
 
 

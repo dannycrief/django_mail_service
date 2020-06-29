@@ -1,5 +1,4 @@
 body {
-    /*height: 5000px;*/
     font-family: Roboto, sans-serif !important;
 }
 
@@ -150,4 +149,27 @@ nav.navbar {
     align-items: center;
     background-color: #ffffff;
     height: 100vh;
+}
+
+.email-list {
+    background-color: rgba(86, 256, 255, 0.3);
+}
+
+.to-send-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards {
+    display: flex;
+    margin: 15px 0;
+}
+
+.card {
+    margin: 0 5px;
+}
+
+.to-send-form button {
+    align-self: end !important;
 }
