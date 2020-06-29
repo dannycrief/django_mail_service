@@ -117,7 +117,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    # '/var/www/static',
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
@@ -125,5 +124,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 465
+EMAIL_HOST_USER = 'step.kozbvb@gmail.com'
+EMAIL_HOST_PASSWORD = 'Cntgeibr145++)'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'step.kozbvb@gmail.com'

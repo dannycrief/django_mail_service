@@ -143,3 +143,11 @@ nav.navbar {
 #hint_id_password2 {
     color: #3eadff !important;
 }
+
+.email-configuration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    height: 100vh;
+}

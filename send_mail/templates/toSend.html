@@ -1,0 +1,21 @@
+{% include 'index.html' %}
+{% block history %}
+    <div class="container" style="display: flex; justify-content: center; align-items: center">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for i in history %}
+                        --------------------------
+                        <p>To: {{ i.receiver }}</p>
+                        <p>Title: {{ i.title }}</p>
+                        <p>Message: {{ i.message }}</p>
+                        <p>Date of create: {{ i.date_of_create }}</p>
+                        <p>Date of send: {{ i.date_of_send }}</p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success" style="align-self: center;">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Main{% endblock %}
 {% block index %}
     <div class="container">
         <div class="row">
@@ -6,6 +7,10 @@
                 <div class="main-content__p">
                     <h1 class="main-content__header">Email Newsletter Service</h1>
                     <p class="main-content__paragraph">Send email at time and don't care about it</p>
+                    {% if  request.path  != '/sendemail/' and not user.is_authenticated %}
+                        <p class="main-content__paragraph">You can simply send email <a
+                                href="{% url 'email-send:send-email' %}">here</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
