@@ -6,7 +6,7 @@
 <li>Run terminal;</li>
 <li>Clone project in your workspace using <b>git clone git@github.com:dannycrief/django_mail_service.git</b>;</li>
 <li>Create virtual environment and activate it;</li>
-<li>Go to django-mail-service directory using <b>cd django-mail-service</b>;</li>
+<li>Go to django_mail_service  directory using <b>cd django_mail_service</b>;</li>
 <li>Install requirements from <b>requirements.txt</b></li>
 <li>Do not use migrate/makemigrations commands, because database is already done.</li>
 <li>If everything is okay, run it by using <b>python manage.py runserver</b></li>
