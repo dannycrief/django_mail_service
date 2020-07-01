@@ -24,7 +24,7 @@ SECRET_KEY = '&k2mm^1img*d$z)yhqygk7*y76+7!*mo+6icrh$rr%rdj31kaw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://django-mail.herokuapp.com/', '127.0.0.1:8000', 'localhost:8000']
 
 # Application definition
 
