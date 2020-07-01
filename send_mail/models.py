@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class EmailIHistory(models.Model):
-    user = models.ForeignKey(User, related_name='sender', verbose_name='Sender', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='sender', verbose_name='User', on_delete=models.CASCADE)
     receiver = models.EmailField(max_length=255)
     title = models.CharField(max_length=255)
     message = models.TextField(max_length=500)

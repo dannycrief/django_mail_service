@@ -16,4 +16,4 @@ class RegisterForm(UserCreationForm):
 class SendEmailForm(ModelForm):
     class Meta:
         model = EmailIHistory
-        fields = ['receiver', 'title', 'message', 'date_of_send', 'user']
+        fields = ['user', 'receiver', 'title', 'message', 'date_of_send']

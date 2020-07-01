@@ -2,19 +2,32 @@
 {% block history %}
     <div class="container" style="display: flex; justify-content: center; align-items: center">
         <div class="row">
-            <div class="col-md-12">
-                <form method="post">
-                    {% csrf_token %}
-                    {% for i in history %}
-                        --------------------------
-                        <p>To: {{ i.receiver }}</p>
-                        <p>Title: {{ i.title }}</p>
-                        <p>Message: {{ i.message }}</p>
-                        <p>Date of create: {{ i.date_of_create }}</p>
-                        <p>Date of send: {{ i.date_of_send }}</p>
-                    {% endfor %}
-                </form>
+            <div class="cards">
+                {% for i in history %}
+                    <div class="card" style="width: 20rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">To {{ i.receiver }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><p>
+                                Created: {{ i.date_of_create }}</p>
+                            </h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><p>Must be
+                                send: {{ i.date_of_send }}</p>
+                            </h6>
+                            <p class="card-text hidden el-{{ i.id }}">{{ i.message|truncatechars:'27'|linebreaks }}</p>
+                            <p class="card-text full el-{{ i.id }}">{{ i.message }}</p>
+                            <button type="button" class="btn btn-primary more-button el-{{ i.id }}"
+                                    onclick="showMore({{ i.id }});">
+                                Show more
+                            </button>
+                            <button type="button" class="btn btn-primary less-button el-{{ i.id }}"
+                                    onclick="showLess({{ i.id }});">
+                                Show less
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}

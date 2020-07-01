@@ -1,67 +1,72 @@
 {% include 'index.html' %}
 {% block history %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {% if history %}
-                    <form method="post" class="to-send-form">
-                        {% csrf_token %}
-                        <div class="cards">
-                            {% for i in history %}
-                                <div class="card" style="width: 20rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">To {{ i.receiver }}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted"><p>Created: {{ i.date_of_create }}</p>
-                                        </h6>
-                                        <h6 class="card-subtitle mb-2 text-muted"><p>Must be
-                                            send: {{ i.date_of_send }}</p>
-                                        </h6>
-                                        <p class="card-text hidden el-{{ i.id }}">{{ i.message|truncatechars:'27'|linebreaks }}</p>
-                                        <p class="card-text full el-{{ i.id }}">{{ i.message}}</p>
-                                        <button type="button" class="btn btn-primary more-button el-{{ i.id }}" onclick="showMore({{ i.id }});">
-                                            Show more
+    <section class="main-section-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if history %}
+                        <form method="post" class="to-send-form">
+                            {% csrf_token %}
+                            <div class="cards">
+                                {% for i in history %}
+                                    <div class="card" style="width: 20rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">To {{ i.receiver }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><p>
+                                                Created: {{ i.date_of_create }}</p>
+                                            </h6>
+                                            <h6 class="card-subtitle mb-2 text-muted"><p>Must be
+                                                send: {{ i.date_of_send }}</p>
+                                            </h6>
+                                            <p class="card-text hidden el-{{ i.id }}">{{ i.message|truncatechars:'27'|linebreaks }}</p>
+                                            <p class="card-text full el-{{ i.id }}">{{ i.message }}</p>
+                                            <button type="button" class="btn btn-primary more-button el-{{ i.id }}"
+                                                    onclick="showMore({{ i.id }});">
+                                                Show more
+                                            </button>
+                                            <button type="button" class="btn btn-primary less-button el-{{ i.id }}"
+                                                    onclick="showLess({{ i.id }});">
+                                                Show less
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-button">
+                                <button type="submit" class="btn btn-success" style="align-self: center;">Send</button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
+                                hidden></button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                             tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Alert</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
-                                         <button type="button" class="btn btn-primary less-button el-{{ i.id }}" onclick="showLess({{ i.id }});">
-                                            Show less
+                                    </div>
+                                    <div class="modal-body">
+                                        You don't have any messages to send
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Understood
                                         </button>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                        <div class="form-button">
-                            <button type="submit" class="btn btn-success" style="align-self: center;">Send</button>
-                        </div>
-                    </form>
-                {% else %}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
-                            hidden></button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
-                         tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Alert</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    You don't have any messages to send
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Understood
-                                    </button>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <script>
-                        $('button[data-target="#staticBackdrop"]').click();
-                    </script>
-                {% endif %}
+                        <script>
+                            $('button[data-target="#staticBackdrop"]').click();
+                        </script>
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

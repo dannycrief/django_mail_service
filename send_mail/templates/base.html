@@ -72,11 +72,8 @@
         </div>
     </section>
 </main>
-<section>
-    {% if user.is_authenticated %}
-        {% block config-page %}{% endblock %}
-    {% endif %}
-</section>
+
+{% block config-page %}{% endblock %}
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -1,6 +1,5 @@
 import time
 
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, SendEmailForm
@@ -77,7 +76,7 @@ def send_email(request):
         form = SendEmailForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('email-send:email-history')
+        return redirect('email-send:to-send')
     else:
         form = SendEmailForm()
     return render(request, 'sendEmailConfig.html', {'form': form})

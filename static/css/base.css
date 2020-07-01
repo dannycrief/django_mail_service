@@ -143,6 +143,12 @@ nav.navbar {
     color: #3eadff !important;
 }
 
+textarea#id_message,
+select#id_user {
+    background-color: rgba(62, 73, 255, 0.1);
+    border-color: #55e2ff;
+}
+
 .email-configuration {
     display: flex;
     justify-content: center;
@@ -164,12 +170,21 @@ nav.navbar {
 .cards {
     display: flex;
     margin: 15px 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
-    margin: 0 5px;
+    margin: 5px !important;
 }
 
 .to-send-form button {
     align-self: end !important;
+}
+
+.main-section-form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
