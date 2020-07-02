@@ -24,7 +24,7 @@ SECRET_KEY = '&k2mm^1img*d$z)yhqygk7*y76+7!*mo+6icrh$rr%rdj31kaw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-mail.herokuapp.com', '127.0.0.1:8000', 'localhost:8000']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -81,6 +81,7 @@ DATABASES = {
 
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
+
     DATABASES = {'default': dj_database_url.config()}
 
 # Password validation
@@ -132,10 +133,20 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_POST = 465
-EMAIL_HOST_USER = 'step.kozbvb@gmail.com'
-EMAIL_HOST_PASSWORD = 'Cntgeibr145++)'
+# SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'step.kozbvb@gmail.com'
+DEFAULT_FROM_EMAIL = 'step.kozbvb@icloud.com'
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
+# EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")  # this is your API key
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+# SENDGRID_ECHO_TO_STDOUT = False

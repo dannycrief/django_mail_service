@@ -5,3 +5,5 @@ pylibmc==1.6.1
 django-crispy-forms
 dj-database-url
 psycopg2
+sendgrid
+django-sendgrid-v5

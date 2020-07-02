@@ -1,3 +1,4 @@
+import os
 import time
 
 from django.contrib.auth.decorators import login_required
@@ -5,8 +6,12 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, SendEmailForm
 from django.contrib.auth import logout
 from .models import EmailIHistory
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 import threading
+from django.conf import settings
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 def index(request):
@@ -34,13 +39,17 @@ def user_logout(request):
 def send_letter(email):
     receiver = email.receiver
     title = email.title
-    message = email.message
-    print(receiver, email, message)
-    if receiver and title and message:
+    content = email.message
+
+    print(receiver, email, content)
+    if receiver and title and content:
         time.sleep(10)
-        email.send_status = True
-        email.save()
-        send_mail(title, message, None, [receiver], fail_silently=False)
+        is_sent = send_mail(subject=title, message=content, from_email='step.kozbvb@icloud.com',
+                            recipient_list=[receiver], fail_silently=False)
+        if is_sent:
+            email.send_status = True
+            email.save()
+            return redirect('email-send:email-history')
 
 
 @login_required
